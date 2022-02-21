@@ -47,3 +47,13 @@ def say_something(word: str, *args: tuple[Any]):
 
 t = ("Mike", "Nancy")
 say_something("Hi!", *t)
+
+
+def outer(a: int, b: int) -> None:
+    def plus(c: int, d: int) -> int:
+        return c + d
+
+    print(plus(a, b))
+
+
+outer(10, 29)
