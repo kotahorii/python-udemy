@@ -1,3 +1,5 @@
+from typing import Any
+
 s = (
     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
@@ -21,4 +23,27 @@ A_friends = {"B", "D", "E", "F"}
 
 print(my_friends & A_friends)
 
-print(1 is True)
+count = 0
+
+while count < 5:
+    print(count)
+    count += 1
+else:
+    print("done")
+
+days = ["Mon", "Tue", "Wed"]
+fruits = ["apple", "banana", "orange"]
+drinks = ["coffee", "tea", "beer"]
+
+for day, fruits, drink in zip(days, fruits, drinks):
+    print(day, fruits, drink)
+
+
+def say_something(word: str, *args: tuple[Any]):
+    print("word = ", word)
+    for arg in args:
+        print(arg)
+
+
+t = ("Mike", "Nancy")
+say_something("Hi!", *t)
