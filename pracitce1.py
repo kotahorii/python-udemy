@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Callable
 
 s = (
     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -57,3 +57,15 @@ def outer(a: int, b: int) -> None:
 
 
 outer(10, 29)
+
+
+def outer(a: int, b: int) -> Callable[..., int]:
+    def inner() -> int:
+        return a + b
+
+    return inner
+
+
+f = outer(1, 2)
+r = f()
+print(r)
