@@ -69,3 +69,16 @@ def outer(a: int, b: int) -> Callable[..., int]:
 f = outer(1, 2)
 r = f()
 print(r)
+
+
+def circle_area_func(pi: float):
+    def circle_area(radius: int):
+        return pi * radius ** 2
+
+    return circle_area
+
+
+cal1 = circle_area_func(3.14)
+cal2 = circle_area_func(3.141592)
+
+print(cal1(10))
