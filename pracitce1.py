@@ -82,3 +82,26 @@ cal1 = circle_area_func(3.14)
 cal2 = circle_area_func(3.141592)
 
 print(cal1(10))
+
+
+def print_info(func: Callable[[int, int], int]):
+    def wrapper(*args: int, **kwargs: int):
+        print("start")
+        result = func(*args, **kwargs)
+        print("end")
+        return result
+
+    return wrapper
+
+
+@print_info
+def add_num(a: int, b: int):
+    return a + b
+
+
+r = add_num(10, 20)
+print(r)
+
+# f = print_info(add_num)
+# r = f(10, 20)
+# print(r)
