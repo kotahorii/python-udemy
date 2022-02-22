@@ -45,3 +45,12 @@ t2 = (5, 6, 7, 8, 9, 10)
 
 r = [i * j for i in t for j in t2]
 print(r)
+
+w = ["mon", "tue", "wed"]
+f = ["coffee", "milk", "water"]
+
+d = {x: y for x, y in zip(w, f)}
+print(d)
+
+g = (i for i in range(10))
+print(type(g))
