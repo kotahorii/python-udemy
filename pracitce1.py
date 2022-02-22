@@ -10,9 +10,8 @@ word = "j" + word[1:]
 print(word)
 print(word.startswith("j"))
 print(word.count("t"))
-list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-print(list[::2])
-print(list[::-1])
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 
 d = {"x": 10, "y": 20}
 print(d.keys())
@@ -94,7 +93,19 @@ def print_info(func: Callable[[int, int], int]):
     return wrapper
 
 
-@print_info
+def print_more(func: Callable[[int, int], int]):
+    def wrapper(*args: int, **kwargs: int):
+        print("func:", func.__name__)
+        print("args:", args)
+        print("kwargs:", kwargs)
+        result = func(*args, **kwargs)
+        print("result:", result)
+        return result
+
+    return wrapper
+
+
+@print_more
 def add_num(a: int, b: int):
     return a + b
 
@@ -105,3 +116,10 @@ print(r)
 # f = print_info(add_num)
 # r = f(10, 20)
 # print(r)
+
+l = ["Mon", "tue", "Wed", "Thu", "fri", "sat", "Sun"]
+
+
+def change_words(words: list[int], func: Callable[str, str]):
+    for word in words:
+        print(func(word))
