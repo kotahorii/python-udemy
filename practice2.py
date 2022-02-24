@@ -54,3 +54,10 @@ print(d)
 
 g = (i for i in range(10))
 print(type(g))
+
+l = [1, 2, 3]
+i = 5
+try:
+    l[i]
+except IndexError as exc:
+    print(f"Don't worry: {exc}")
