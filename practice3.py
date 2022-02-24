@@ -1,7 +1,5 @@
-from lesson_pacage.talk import human
+from lesson_pacage.talk import *
 from lesson_pacage.tools import utils
 
-r = utils.say_twice("hello")
-print(r)
-
+print(animal.sing())
 print(human.sing())
