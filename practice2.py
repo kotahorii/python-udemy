@@ -55,9 +55,30 @@ print(d)
 g = (i for i in range(10))
 print(type(g))
 
-l = [1, 2, 3]
-i = 5
+# l = [1, 2, 3]
+# i = 5
+# try:
+#     l[i]
+# except IndexError as exc:
+#     print(f"Don't worry: {exc}")
+# except NameError as ex:
+#     print(f"other:{ex}")
+# finally:
+#     print("clean up")
+
+
+class UppercaseError(Exception):
+    pass
+
+
+def check():
+    words = ["APPLE", "orange", "banana"]
+    for word in words:
+        if word.isupper():
+            raise UppercaseError(word)
+
+
 try:
-    l[i]
-except IndexError as exc:
-    print(f"Don't worry: {exc}")
+    check()
+except UppercaseError as exc:
+    print("This is my fault. Go next")
