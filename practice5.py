@@ -1,15 +1,14 @@
+import abc
 from typing import Optional
 
 
-class Person:
+class Person(metaclass=abc.ABCMeta):
     def __init__(self, age: int) -> None:
         self.age = age
 
+    @abc.abstractclassmethod
     def drive(self):
-        if self.age > 18:
-            print("ok")
-        else:
-            raise Exception("No drive")
+        pass
 
 
 class Baby(Person):
@@ -19,13 +18,19 @@ class Baby(Person):
         else:
             raise ValueError
 
+    def drive(self):
+        return super().drive()
+
 
 class Adult(Person):
-    def __init__(self, age: int) -> None:
+    def __init__(self, age: int = 19) -> None:
         if age >= 18:
             super().__init__(age)
         else:
             raise ValueError
+
+    def drive(self):
+        return super().drive()
 
 
 class Car:
@@ -37,6 +42,10 @@ class Car:
 
     def ride(self, person: Person):
         person.drive()
+
+
+baby = Baby()
+adult = Adult()
 
 
 class ToyotaCar(Car):
@@ -65,8 +74,3 @@ class TeslaCar(Car):
 
     def auto_run(self):
         print("auto run")
-
-
-tesla_car = TeslaCar("Model S", password=456)
-tesla_car.enable_auto_run = True
-print(tesla_car.enable_auto_run)
